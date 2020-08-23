@@ -1,0 +1,91 @@
+---
+cluster: "agave"
+form:
+  - bc_partition
+  - bc_qos
+  - bc_core
+  - bc_time
+  - version
+  - bc_gres
+  - background_color
+  - bc_email_on_started
+  - bc_vnc_resolution
+# - bc_node
+attributes:
+  bc_partition:
+    label: "Partition"
+    value: "serial"
+    help: |
+      - Specify a partition to run on, e.g. `serial` or `debug`. 
+      - Default is `serial`.
+      - **note**: The `debug` partition has a max walltime of 15 minutes.
+      - **note**: The `htc` partition has a max walltime of 4 hours.
+      - **Additional partition info**: http://bit.ly/RCnodes
+
+  bc_qos:
+    label: "QOS"
+    value: "normal"
+    help: |
+      Specify a QOS, e.g. `normal` or `wildfire`. Default is `normal`
+
+  bc_node:
+    label: "Number of Nodes"
+    value: 1
+
+  bc_core:
+    widget: "number_field"
+    label: "Number of cores"
+    value: 1
+    min: 1
+    max: 256
+    help: |
+      Number of cores on node. Default 1 core. **Note** that this is not a
+      dynamic widget! Your choice of cores must reflect what is available on
+      the nodes within a your selected partition. _Additional partition info_:
+      http://bit.ly/RCnodes
+
+  bc_time:
+    label: "Job Wall Time"
+    value: "15"
+    help: |
+      - Set an upper limit on the run time of `SAS`. 
+      - Default is 15 minutes.
+      - **time formats**: "minutes", "minutes:seconds",
+        "hours:minutes:seconds", "days-hours", "days-hours:minutes",
+        "days-hours:minutes:seconds"
+
+  bc_gres:
+    label: "Generic RESources (GPUs)"
+    value: ""
+    help: |
+      - Request GRES here if needed (Generic RESources, usually GPUs, e.g.
+        `gpu:GTX1080:1` or just `gpu:1`)
+      - Default is blank
+      - Note that not all gpu nodes currently support this interactive
+        application! 
+
+  bc_vnc_resolution:
+    required: true
+
+  version:
+    widget: select
+    label: "SAS version"
+    help: "Select the version of SAS you want to load (only 9.4 available)."
+    options:
+      - [ "9.4", "sas/9.4" ]
+
+  background_color:
+    widget: select
+    label: "Desktop Background Color"
+    help: |
+      - This defines the color of the solid desktop background. 
+      - The default is dark.
+      - Change the solid color at any time with the terminal command
+        `xsetroot` and an HTML color, e.g. for black
+        `xsetroot -solid "#000000"`.
+    value: "dark"
+    options:
+      - [   "dark", "#111111" ]
+      - [  "light", "#D1D1D1" ]
+      - [   "gold", "#FFC627" ]
+      - [ "maroon", "#8C1D40" ]

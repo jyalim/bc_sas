@@ -1,0 +1,11 @@
+---
+name: SAS
+category: Interactive Apps
+subcategory: GUIs
+role: batch_connect
+description: |
+  This app will launch a [SAS] GUI on the [Agave cluster]. You will be able
+  to interact with the Stata GUI through a VNC session.
+
+  [Stata]: https://www.sas.com/
+  [Agave cluster]: links.asu.edu/docs

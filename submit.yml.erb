@@ -1,0 +1,30 @@
+# Job submission conf file
+# 
+---
+batch_connect:
+  template: vnc
+  script_wrapper: |
+    module purge
+    export PATH="/packages/Open-OnDemand/virtual-desktop/turbovnc/opt/TurboVNC/bin:$PATH"
+    export WEBSOCKIFY_CMD="/packages/Open-OnDemand/virtual-desktop/websockify/usr/bin/websockify"
+    export PYTHONPATH="/packages/Open-OnDemand/virtual-desktop/websockify/usr/lib/python2.7/site-packages:$PYTHONPATH"
+    %s
+script:
+  native:
+    - "--job-name=ood-virtual-desktop-sas"
+    - "-p"
+    - "<%= bc_partition.blank? ? 'serial' : bc_partition %>"
+    - "-q"
+    - "<%= bc_qos.blank? ? 'normal' : bc_qos %>"
+    - "-c"
+    - "<%= bc_core.blank? ? 1 : bc_core.to_i %>"
+    - "-t"
+    - "<%= bc_time.blank? ? 15 : bc_time %>"
+  <%- if not bc_gres.blank? -%>
+    - "--gres=<%= bc_gres.strip -%>"
+  <%- end -%>
+    - "--error=slurm.%j.err"
+    - "--output=slurm.%j.out"
+    - "--verbose"
+    - "--mail-type=<%= bc_email_on_started == '1' ? 'ALL' : 'NONE' -%>"
+    - "--mail-user=<%= ENV['USER'] -%>@asu.edu"
