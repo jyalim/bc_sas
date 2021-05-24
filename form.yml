@@ -20,7 +20,7 @@ attributes:
       - Default is `serial`.
       - **note**: The `debug` partition has a max walltime of 15 minutes.
       - **note**: The `htc` partition has a max walltime of 4 hours.
-      - **Additional partition info**: http://bit.ly/RCnodes
+      - **Additional partition info**: https://asurc.atlassian.net/l/c/DBS6VXmR
 
   bc_qos:
     label: "QOS"
@@ -42,7 +42,7 @@ attributes:
       Number of cores on node. Default 1 core. **Note** that this is not a
       dynamic widget! Your choice of cores must reflect what is available on
       the nodes within a your selected partition. _Additional partition info_:
-      http://bit.ly/RCnodes
+      https://asurc.atlassian.net/l/c/DBS6VXmR
 
   bc_time:
     label: "Job Wall Time"
