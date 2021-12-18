@@ -28,3 +28,6 @@ script:
     - "--verbose"
     - "--mail-type=<%= bc_email_on_started == '1' ? 'ALL' : 'NONE' -%>"
     - "--mail-user=<%= ENV['USER'] -%>@asu.edu"
+  <%- if not extra_sbatch.blank? -%>
+    - "<%= extra_sbatch.strip -%>"
+  <%- end -%>
