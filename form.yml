@@ -10,6 +10,7 @@ form:
   - background_color
   - bc_email_on_started
   - bc_vnc_resolution
+  - extra_sbatch
 # - bc_node
 attributes:
   bc_partition:
@@ -89,3 +90,11 @@ attributes:
       - [  "light", "#D1D1D1" ]
       - [   "gold", "#FFC627" ]
       - [ "maroon", "#8C1D40" ]
+
+  extra_sbatch:
+    label: "Additional sbatch options"
+    value: ""
+    help: | 
+      **Advanced Feature**. Leave this blank unless you want to specify
+      additional sbatch options.
+
